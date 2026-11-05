@@ -4,8 +4,8 @@ import jakarta.validation.constraints.*;
 import lombok.Data;
 import java.math.BigDecimal;
 
-    @Data public class PropertyResponseDTO {
-
+    @Data
+    public class PropertyResponseDTO {
         private Long id;
         private String title;
         private String description;
@@ -17,5 +17,7 @@ import java.math.BigDecimal;
         private Integer bathrooms;
         private Double areaSqft;
         private String status;
+        // SALE or RENT
+        private String listingType;
 
 }

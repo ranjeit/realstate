@@ -2,10 +2,8 @@ package com.realestate.backend.entity;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Positive;
 import lombok.*;
-
 import java.math.BigDecimal;
 
 @AllArgsConstructor
@@ -20,12 +18,8 @@ public class Property {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-
     @Column(nullable = false)
     private String title;
-
-
     @Column(nullable = false)
      private String description;
 
@@ -54,4 +48,7 @@ public class Property {
 
     @Column(nullable = false)
     private String status ="AVAILABLE";
+
+    @Column(nullable = false)
+    private String listingType = "SALE";
 }

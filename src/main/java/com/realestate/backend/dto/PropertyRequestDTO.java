@@ -37,4 +37,9 @@ public class PropertyRequestDTO {
     @NotBlank
     private String status;
 
+    @NotBlank
+    @Pattern(regexp = "SALE|RENT",
+            message = "Listing type must be SALE or RENT")
+    private String listingType;
+
 }

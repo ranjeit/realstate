@@ -25,6 +25,8 @@ public class PropertyMapper {
         property.setBedrooms(requestDTO.getBedrooms());
         property.setBathrooms(requestDTO.getBathrooms());
         property.setAreaSqft(requestDTO.getAreaSqft());
+        property.setStatus(requestDTO.getStatus());
+        property.setListingType(requestDTO.getListingType());
     }
     public PropertyResponseDTO toDTO(Property property) {
         PropertyResponseDTO dto = new PropertyResponseDTO();
@@ -40,6 +42,7 @@ public class PropertyMapper {
         dto.setBathrooms(property.getBathrooms());
         dto.setAreaSqft(property.getAreaSqft());
         dto.setStatus(property.getStatus());
+        dto.setListingType(property.getListingType());
 
         return dto;
     }
