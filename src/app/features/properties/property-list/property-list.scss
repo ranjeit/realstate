@@ -1,0 +1,95 @@
+
+:host {
+  display: block;
+  min-height: 70vh;
+  background-color: #f8f9fc;
+}
+
+.property-list-section {
+  padding: 70px 0;
+}
+
+.section-heading {
+  margin-bottom: 45px;
+
+  .subtitle {
+    color: #0d6efd;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+  }
+
+  h1 {
+    color: #172b4d;
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-top: 12px;
+  }
+
+  p {
+    color: #6c757d;
+    max-width: 600px;
+    margin: 12px auto 0;
+  }
+}
+
+.property-card {
+  border-radius: 16px;
+  overflow: hidden;
+  background: #fff;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12) !important;
+  }
+
+  .card-body {
+    padding: 25px;
+  }
+
+  h5 {
+    color: #172b4d;
+    line-height: 1.4;
+  }
+
+  h4 {
+    font-size: 1.5rem;
+  }
+
+  p {
+    line-height: 1.6;
+  }
+
+  hr {
+    border-color: #e9ecef;
+  }
+}
+
+.property-features {
+  color: #6c757d;
+  font-size: 0.85rem;
+
+  i {
+    color: #0d6efd;
+    margin-right: 4px;
+  }
+}
+
+.status-badge {
+  font-size: 0.75rem;
+  padding: 7px 12px;
+  border-radius: 20px;
+}
+
+.view-details-btn {
+  border-radius: 25px;
+  padding: 10px 18px;
+  font-weight: 600;
+}
+
+.empty-state {
+  padding: 60px 20px;
+  background: #fff;
+  border-radius: 16px;
+}

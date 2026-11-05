@@ -1,0 +1,171 @@
+
+// :host {
+//   display: block;
+//   min-height: 70vh;
+//   background-color: #f8f9fa;
+// }
+
+// .card {
+//   border-radius: 16px;
+//   overflow: hidden;
+// }
+
+// .card-body {
+//   padding: 2rem !important;
+// }
+
+// h2 {
+//   color: #212529;
+//   font-size: 2rem;
+// }
+
+// h3 {
+//   font-size: 1.8rem;
+// }
+
+// h5 {
+//   color: #343a40;
+// }
+
+// .bg-light {
+//   transition: transform 0.2s ease, box-shadow 0.2s ease;
+// }
+
+// .bg-light:hover {
+//   transform: translateY(-3px);
+//   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+// }
+
+// .btn-outline-primary {
+//   border-radius: 25px;
+//   padding: 8px 20px;
+// }
+
+// .badge {
+//   padding: 8px 14px;
+//   font-size: 0.85rem;
+// }
+
+// @media (max-width: 576px) {
+//   .card-body {
+//     padding: 1.25rem !important;
+//   }
+
+//   h2 {
+//     font-size: 1.5rem;
+//   }
+// }
+// .property-action-buttons {
+//   display: flex !important;
+//   justify-content: flex-end;
+//   align-items: center;
+//   gap: 12px;
+//   width: 100%;
+//   margin-top: 20px;
+// }
+
+// .property-action-buttons button,
+// .property-action-buttons a {
+//   display: inline-flex !important;
+//   visibility: visible !important;
+//   opacity: 1 !important;
+// }   
+
+// from here updated and clean code
+
+:host {
+  display: block;
+  min-height: 70vh;
+  background-color: #f8f9fa;
+}
+
+.card {
+  border: none;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.card-body {
+  padding: 2rem;
+}
+
+h2 {
+  color: #212529;
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+h3 {
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+h5 {
+  color: #343a40;
+  font-weight: 600;
+}
+
+.bg-light {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.bg-light:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.badge {
+  padding: 8px 14px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border-radius: 20px;
+}
+
+.btn-outline-primary {
+  border-radius: 25px;
+  padding: 8px 20px;
+}
+
+/* Property action buttons */
+.property-action-buttons {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.property-action-buttons button,
+.property-action-buttons a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Responsive layout */
+@media (max-width: 576px) {
+  .card-body {
+    padding: 1.25rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  h3 {
+    font-size: 1.5rem;
+  }
+
+  .property-action-buttons {
+    justify-content: stretch;
+  }
+
+  .property-action-buttons button,
+  .property-action-buttons a {
+    flex: 1 1 auto;
+  }
+}
