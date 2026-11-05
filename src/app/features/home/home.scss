@@ -1,0 +1,33 @@
+.hero-section {
+  min-height: 550px;
+  padding: 90px 0 120px;
+  background:
+    linear-gradient(rgba(10, 25, 47, 0.78), rgba(10, 25, 47, 0.75)),
+    url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1600')
+    center/cover no-repeat;
+}
+.min-vh-75 {
+  min-height: 350px;
+}
+.search-box {
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  position: relative;
+  margin-top: 30px;
+}
+.property-card {
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+.property-card:hover {
+  transform: translateY(-6px);
+}
+.property-card img {
+  height: 230px;
+  object-fit: cover;
+}
+.about-section {
+  background: #f5f8fc;
+}

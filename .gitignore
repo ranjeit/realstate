@@ -1,33 +1,88 @@
-HELP.md
+# ==================================================
+# ANGULAR / NODE.JS
+# ==================================================
+
+# Compiled output
+/dist
+/tmp
+/out-tsc
+/bazel-out
+
+# Node dependencies
+/node_modules
+npm-debug.log
+yarn-error.log
+
+# Angular cache
+/.angular/cache
+
+# Sass
+.sass-cache/
+
+# Coverage and testing
+/coverage
+testem.log
+__screenshots__/
+
+# ==================================================
+# JAVA / SPRING BOOT / MAVEN / GRADLE
+# ==================================================
+
+# Maven
 target/
 .mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
 
-### STS ###
-.apt_generated
-.classpath
-.factorypath
-.project
-.settings
-.springBeans
-.sts4-cache
-
-### IntelliJ IDEA ###
-.idea
-*.iws
-*.iml
-*.ipr
-
-### NetBeans ###
-/nbproject/private/
-/nbbuild/
-/dist/
-/nbdist/
-/.nb-gradle/
+# Gradle
 build/
 !**/src/main/**/build/
 !**/src/test/**/build/
 
-### VS Code ###
-.vscode/
+# Spring Tool Suite
+.apt_generated
+.springBeans
+.sts4-cache
+.factorypath
+
+# ==================================================
+# IDEs AND EDITORS
+# ==================================================
+
+# IntelliJ IDEA
+.idea/
+*.iws
+*.iml
+*.ipr
+
+# Eclipse / STS
+.classpath
+.project
+.settings/
+
+# Visual Studio Code
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+!.vscode/mcp.json
+
+# Other editors
+.c9/
+*.launch
+*.sublime-workspace
+.history/*
+
+# ==================================================
+# MISCELLANEOUS
+# ==================================================
+
+HELP.md
+/connect.lock
+/libpeerconnection.log
+/typings
+
+# System files
+.DS_Store
+Thumbs.db

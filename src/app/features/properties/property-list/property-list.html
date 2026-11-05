@@ -1,0 +1,255 @@
+
+
+<!---    after adding search field -->
+
+<section class="py-5">
+  <div class="container">
+
+    <!-- Page Heading -->
+    <div class="text-center mb-5">
+      <h1 class="fw-bold">Explore Properties</h1>
+      <p class="text-secondary">
+        Discover your perfect property with RodhanG-RealEstateHub.
+      </p>
+    </div>
+
+    <!-- Loading -->
+    <div *ngIf="loading" class="text-center py-5">
+      <div class="spinner-border text-primary" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+      <p class="mt-2">Loading properties...</p>
+    </div>
+
+    <!-- Error -->
+    <div *ngIf="!loading && errorMessage"
+         class="alert alert-danger text-center">
+      {{ errorMessage }}
+    </div>
+
+    <!-- Search and Filter Panel -->
+    <div *ngIf="!loading && !errorMessage && properties.length > 0"
+         class="card shadow-sm border-0 mb-5">
+
+      <div class="card-body p-4">
+
+        <h4 class="fw-bold mb-4">
+          <i class="bi bi-funnel text-primary me-2"></i>
+          Search & Filter Properties
+        </h4>
+
+        <div class="row g-3">
+
+          <!-- Listing Type -->
+          <div class="col-md-4 col-lg-3">
+            <label class="form-label fw-semibold">Listing Type</label>
+            <select class="form-select"
+                    [(ngModel)]="selectedListingType"
+                    (ngModelChange)="applyFilters()">
+              <option value="ALL">All Listings</option>
+              <option value="SALE">For Sale</option>
+              <option value="RENT">For Rent</option>
+            </select>
+          </div>
+
+          <!-- City -->
+          <div class="col-md-4 col-lg-3">
+            <label class="form-label fw-semibold">City</label>
+            <input type="text"
+                   class="form-control"
+                   placeholder="Enter city name"
+                   [(ngModel)]="selectedCity"
+                   (ngModelChange)="applyFilters()">
+          </div>
+
+          <!-- Property Type -->
+          <div class="col-md-4 col-lg-3">
+            <label class="form-label fw-semibold">Property Type</label>
+            <select class="form-select"
+                    [(ngModel)]="selectedPropertyType"
+                    (ngModelChange)="applyFilters()">
+              <option value="ALL">All Types</option>
+              <option value="APARTMENT">Apartment</option>
+              <option value="HOUSE">House</option>
+              <option value="VILLA">Villa</option>
+              <option value="LAND">Land</option>
+              <option value="COMMERCIAL">Commercial</option>
+            </select>
+          </div>
+
+          <!-- Bedrooms -->
+          <div class="col-md-4 col-lg-3">
+            <label class="form-label fw-semibold">Bedrooms</label>
+            <select class="form-select"
+                    [(ngModel)]="selectedBedrooms"
+                    (ngModelChange)="applyFilters()">
+              <option [ngValue]="null">Any Bedrooms</option>
+              <option [ngValue]="1">1+ Bedrooms</option>
+              <option [ngValue]="2">2+ Bedrooms</option>
+              <option [ngValue]="3">3+ Bedrooms</option>
+              <option [ngValue]="4">4+ Bedrooms</option>
+              <option [ngValue]="5">5+ Bedrooms</option>
+            </select>
+          </div>
+
+          <!-- Minimum Price -->
+          <div class="col-md-4 col-lg-3">
+            <label class="form-label fw-semibold">Minimum Price (₹)</label>
+            <input type="number"
+                   class="form-control"
+                   placeholder="Minimum price"
+                   min="0"
+                   [(ngModel)]="minPrice"
+                   (ngModelChange)="applyFilters()">
+          </div>
+
+          <!-- Maximum Price -->
+          <div class="col-md-4 col-lg-3">
+            <label class="form-label fw-semibold">Maximum Price (₹)</label>
+            <input type="number"
+                   class="form-control"
+                   placeholder="Maximum price"
+                   min="0"
+                   [(ngModel)]="maxPrice"
+                   (ngModelChange)="applyFilters()">
+          </div>
+
+          <!-- Reset -->
+          <div class="col-md-4 col-lg-3 d-flex align-items-end">
+            <button type="button"
+                    class="btn btn-outline-secondary w-100"
+                    (click)="resetFilters()">
+              <i class="bi bi-arrow-counterclockwise me-2"></i>
+              Reset Filters
+            </button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Empty Database -->
+    <div *ngIf="!loading && !errorMessage && properties.length === 0"
+         class="text-center py-5">
+      <h4>No properties found.</h4>
+    </div>
+
+    <!-- Filtered Results -->
+    <div *ngIf="!loading && !errorMessage && properties.length > 0">
+
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <h4 class="fw-bold mb-0">Property Listings</h4>
+        <span class="text-secondary">
+          {{ filteredProperties.length }} properties found
+        </span>
+      </div>
+
+      <!-- No Matching Results -->
+      <div *ngIf="filteredProperties.length === 0"
+           class="alert alert-info text-center py-4">
+        <i class="bi bi-search fs-3"></i>
+        <h5 class="mt-2">No matching properties found</h5>
+        <p class="mb-3">
+          Try changing your search filters.
+        </p>
+        <button class="btn btn-primary"
+                type="button"
+                (click)="resetFilters()">
+          Clear Filters
+        </button>
+      </div>
+
+      <!-- Property Cards -->
+      <div class="row g-4"
+           *ngIf="filteredProperties.length > 0">
+
+        <div class="col-md-6 col-lg-4"
+             *ngFor="let property of filteredProperties">
+
+          <div class="card h-100 shadow-sm border-0">
+
+            <div class="card-body d-flex flex-column">
+
+              <!-- Listing Type, Status and ID -->
+              <div class="d-flex justify-content-between align-items-center">
+
+                <div class="d-flex flex-wrap gap-2">
+
+                  <!-- FOR SALE / FOR RENT -->
+                  <span class="badge"
+                        [ngClass]="{
+                          'bg-primary': property.listingType === 'SALE',
+                          'bg-warning text-dark': property.listingType === 'RENT'
+                        }">
+                    {{ property.listingType === 'RENT' ? 'FOR RENT' : 'FOR SALE' }}
+                  </span>
+
+                  <!-- Availability Status -->
+                  <span class="badge"
+                        [ngClass]="{
+                          'bg-success': property.status === 'AVAILABLE',
+                          'bg-danger': property.status !== 'AVAILABLE'
+                        }">
+                    {{ property.status }}
+                  </span>
+
+                </div>
+
+                <span class="text-secondary">
+                  #{{ property.id }}
+                </span>
+
+              </div>
+
+              <!-- Property Title -->
+              <h5 class="fw-bold mt-3">
+                {{ property.title }}
+              </h5>
+
+              <!-- Location -->
+              <p class="text-secondary">
+                <i class="bi bi-geo-alt text-primary"></i>
+                {{ property.location }}, {{ property.city }}
+              </p>
+
+              <!-- Price -->
+              <h4 class="text-primary fw-bold mb-1">
+                {{ property.price | currency:'INR':'symbol':'1.0-0' }}
+              </h4>
+
+              <small class="text-secondary mb-3">
+                {{ property.listingType === 'RENT'
+                    ? 'Monthly Rent / month'
+                    : 'Sale Price' }}
+              </small>
+
+              <!-- Description -->
+              <p class="text-secondary">
+                {{ property.description }}
+              </p>
+
+              <hr>
+
+              <!-- Property Information -->
+              <div class="d-flex justify-content-between small text-secondary">
+                <span>{{ property.bedrooms }} Beds</span>
+                <span>{{ property.bathrooms }} Baths</span>
+                <span>{{ property.areaSqft }} sqft</span>
+              </div>
+
+              <!-- View Details -->
+              <a class="btn btn-primary w-100 mt-3"
+                 [routerLink]="['/properties', property.id]">
+                View Details
+                <i class="bi bi-arrow-right ms-2"></i>
+              </a>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>

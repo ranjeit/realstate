@@ -1,0 +1,81 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
+  <div class="container">
+    <!-- Brand -->
+    <a class="navbar-brand fw-bold text-primary fs-3"
+     [routerLink]="['/']">
+      <i class="bi bi-houses-fill me-2"></i>
+      RodhanG-RealEstateHub
+    </a>
+
+    <!-- Mobile Toggle -->
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#mainNavbar"
+      aria-controls="mainNavbar"
+      aria-expanded="false"
+      aria-label="Toggle navigation">
+
+      <span class="navbar-toggler-icon"></span>
+    </button>
+     <!-- Navigation Links -->
+    <div class="collapse navbar-collapse" id="mainNavbar">
+
+      <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-3">
+
+        <!-- Home -->
+        <li class="nav-item">
+       <a class="nav-link"
+     [routerLink]="['/']"
+     [routerLinkActiveOptions]="{ exact: true }"
+     routerLinkActive="active">
+    Home
+  </a>
+   </li>
+
+
+        <!-- Properties-->
+        <li class="nav-item">
+          <a class="nav-link"
+            routerLink="/properties"
+           routerLinkActive="active">Properties
+          </a>
+        </li>
+
+        <!-- About Us-->
+        <li class="nav-item">
+          <a class="nav-link"
+          [routerLink]="['/']"
+          fragment="about">About Us
+        </a>
+        </li>
+
+        <!-- Contact-->
+        <li class="nav-item">
+          <a class="nav-link" 
+          [routerLink]="['/']"
+          fragment="contact">
+          Contact</a>
+        </li>
+
+         <!-- Explore Properties  -->
+        <li class="nav-item">
+          <a class="btn btn-primary rounded-pill px-4"
+           routerLink="/properties">
+            Explore Properties
+          </a>
+        </li>
+
+        <!-- Add Property -->
+         <li class="nav-item">
+          <a class="btn btn-outline-primary rounded-pill px-4"
+               routerLink="/properties/add">
+              <i class="bi bi-plus-circle me-1"></i>
+              Add property
+              </a>
+         </li>
+      </ul>
+    </div>
+  </div>
+</nav>

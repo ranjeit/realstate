@@ -1,0 +1,17 @@
+.navbar {
+  padding: 15px 0;
+}
+
+.navbar-brand {
+  letter-spacing: -1px;
+}
+
+.nav-link {
+  font-weight: 500;
+  color: #343a40;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: #0d6efd;
+}

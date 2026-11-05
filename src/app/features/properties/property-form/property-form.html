@@ -1,0 +1,158 @@
+
+<section class="property-form-section py-5">
+  <div class="container">
+
+    <div class="form-heading text-center mb-5">
+      <span class="text-primary fw-bold">PROPERTY MANAGEMENT</span>
+
+      <h2 class="fw-bold mt-2">
+        {{ isEditMode ? 'Update Property' : 'Add New Property' }}
+      </h2>
+
+      <p class="text-secondary">
+        Enter the property information below.
+      </p>
+    </div>
+
+    <div class="form-container mx-auto">
+
+      <div *ngIf="loading" class="text-center py-4">
+        <div class="spinner-border text-primary"></div>
+        <p class="mt-2">Loading property...</p>
+      </div>
+
+      <div *ngIf="!loading">
+
+        <div *ngIf="errorMessage" class="alert alert-danger">
+          {{ errorMessage }}
+        </div>
+
+        <form [formGroup]="propertyForm" (ngSubmit)="onSubmit()">
+
+          <h5 class="form-section-title">Basic Information</h5>
+
+          <div class="mb-3">
+            <label class="form-label">Property Title *</label>
+            <input type="text" class="form-control"
+                   formControlName="title"
+                   placeholder="Enter property title">
+            <small class="text-danger"
+              *ngIf="propertyForm.get('title')?.touched && propertyForm.get('title')?.invalid">
+              Please enter at least 3 characters.
+            </small>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Description *</label>
+            <textarea class="form-control" rows="4"
+                      formControlName="description"
+                      placeholder="Describe your property"></textarea>
+          </div>
+
+          <div class="row">
+            <!-- Listing type  -->
+            <div class="col-md-6 mb-3">
+              <label class="form-label">Listing Type *</label>
+    <select class="form-select" formControlName="listingType">
+      <option value="SALE">For Sale</option>
+      <option value="RENT">For Rent</option>
+    </select>
+  </div>
+
+  <!-- Price -->
+  <div class="col-md-6 mb-3">
+    <label class="form-label">
+      {{ propertyForm.get('listingType')?.value === 'RENT'
+          ? 'Monthly Rent (₹) *'
+          : 'Sale Price (₹) *' }}
+    </label>
+
+    <input type="number"
+           class="form-control"
+           formControlName="price"
+           placeholder="Enter amount">
+  </div>
+           <!-- property type  -->
+            <div class="col-md-6 mb-3">
+              <label class="form-label">Property Type *</label>
+              <select class="form-select" formControlName="propertyType">
+                <option value="">Select Type</option>
+                <option value="APARTMENT">Apartment</option>
+                <option value="HOUSE">House</option>
+                <option value="VILLA">Villa</option>
+                <option value="LAND">Land</option>
+                <option value="COMMERCIAL">Commercial</option>
+              </select>
+            </div>
+          </div>
+
+          <h5 class="form-section-title mt-4">Location Information</h5>
+
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label class="form-label">Location *</label>
+              <input type="text" class="form-control"
+                     formControlName="location"
+                     placeholder="Enter area or locality">
+            </div>
+
+            <div class="col-md-6 mb-3">
+              <label class="form-label">City *</label>
+              <input type="text" class="form-control"
+                     formControlName="city"
+                     placeholder="Enter city">
+            </div>
+          </div>
+
+          <h5 class="form-section-title mt-4">Property Details</h5>
+
+          <div class="row">
+            <div class="col-md-4 mb-3">
+              <label class="form-label">Bedrooms</label>
+              <input type="number" class="form-control"
+                     formControlName="bedrooms">
+            </div>
+
+            <div class="col-md-4 mb-3">
+              <label class="form-label">Bathrooms</label>
+              <input type="number" class="form-control"
+                     formControlName="bathrooms">
+            </div>
+
+            <div class="col-md-4 mb-3">
+              <label class="form-label">Area (sqft) *</label>
+              <input type="number" class="form-control"
+                     formControlName="areaSqft">
+            </div>
+          </div>
+
+          <div class="mb-4">
+            <label class="form-label">Property Status *</label>
+            <select class="form-select" formControlName="status">
+              <option value="AVAILABLE">Available</option>
+              <option value="SOLD">Sold</option>
+              <option value="RENTED">Rented</option>
+            </select>
+          </div>
+
+          <div class="d-flex flex-wrap gap-2">
+            <button type="submit" class="btn btn-primary px-4"
+                    [disabled]="submitting">
+              <span *ngIf="submitting"
+                    class="spinner-border spinner-border-sm me-2"></span>
+
+              {{ isEditMode ? 'Update Property' : 'Save Property' }}
+            </button>
+
+            <button type="button" class="btn btn-outline-secondary"
+                    routerLink="/properties">
+              Cancel
+            </button>
+          </div>
+
+        </form>
+
+      </div>
+    </div>
+  </div>
+</section>
