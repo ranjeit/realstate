@@ -1,4 +1,6 @@
-# See https://docs.github.com/get-started/getting-started-with-git/ignoring-files for more about ignoring files.
+# ==================================================
+# ANGULAR / NODE.JS
+# ==================================================
 
 # Compiled output
 /dist
@@ -6,19 +8,57 @@
 /out-tsc
 /bazel-out
 
-# Node
+# Node dependencies
 /node_modules
 npm-debug.log
 yarn-error.log
 
-# IDEs and editors
+# Angular cache
+/.angular/cache
+
+# Sass
+.sass-cache/
+
+# Coverage and testing
+/coverage
+testem.log
+__screenshots__/
+
+# ==================================================
+# JAVA / SPRING BOOT / MAVEN / GRADLE
+# ==================================================
+
+# Maven
+target/
+.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+# Gradle
+build/
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+# Spring Tool Suite
+.apt_generated
+.springBeans
+.sts4-cache
+.factorypath
+
+# ==================================================
+# IDEs AND EDITORS
+# ==================================================
+
+# IntelliJ IDEA
 .idea/
-.project
+*.iws
+*.iml
+*.ipr
+
+# Eclipse / STS
 .classpath
-.c9/
-*.launch
+.project
 .settings/
-*.sublime-workspace
 
 # Visual Studio Code
 .vscode/*
@@ -27,17 +67,21 @@ yarn-error.log
 !.vscode/launch.json
 !.vscode/extensions.json
 !.vscode/mcp.json
+
+# Other editors
+.c9/
+*.launch
+*.sublime-workspace
 .history/*
 
-# Miscellaneous
-/.angular/cache
-.sass-cache/
+# ==================================================
+# MISCELLANEOUS
+# ==================================================
+
+HELP.md
 /connect.lock
-/coverage
 /libpeerconnection.log
-testem.log
 /typings
-__screenshots__/
 
 # System files
 .DS_Store
